@@ -308,6 +308,17 @@ img {
 }
 
 /* video */
+.bgVideo {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(162,162,162,0.8);
+	z-index: 20;
+	display: none;
+}
+
 .video-container-main {
 	display: none;
 	background-color: #000;
@@ -323,6 +334,7 @@ img {
 	width: 100%; 
 	height: 100%;
 	background-size: cover;
+	z-index: 30;
 }
 
 
@@ -958,6 +970,61 @@ img {
 	background: #EFECEC;
 }
 
+.infoClientBlock {
+	position: absolute;
+	top: 60%;
+	height: 200px;
+	border: 1px solid #969696;
+	background-color: #969696;
+	border-radius: 10px;
+	border: 2px solid #E7E7E7;
+	box-shadow: 0 0 1px 2px #686868;
+	box-sizing: border-box;
+	margin: 60px 10px 10px;
+	padding: 15px;
+	cursor: pointer;
+
+	transform-style: preserve-3d;
+	transition: 2s;
+	backface-visibility:hidden;	
+}
+
+.infoClientBlockFace {
+	background: #fff url('../images/fon.jpg') no-repeat 0 0 / cover;
+}
+
+.infoClientBlockBack {
+	background-color: #FD9105;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 26px;
+	color: #353535;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.flip {
+	transform: rotateY(180deg) translateZ(0);
+}
+
+.flipBack {
+	transform: rotateY(-180deg) translateZ(0);
+}
+
+.icon {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%) translateZ(60px);
+	background-color: #2B33D9;
+	backface-visibility: hidden;
+}
+
+
 
 /* screen 10 */
 .screen10 .wrapper {
@@ -967,10 +1034,11 @@ img {
 
 .screen10 .col2 {
 	width: 50%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 }
 
 .screen10 h2 {
@@ -979,6 +1047,10 @@ img {
 
 .screen10 p {
 	margin: 20px 0;
+}
+
+.screen10 .desert {
+	width: 100%;
 }
 
 
@@ -1072,30 +1144,46 @@ footer li:hover .social{
 }
 
 
-.call2ActWindow {
+.call2ActWindow,
+.informer {
+	position: fixed;
+	left: -50%;
 	width: 60%;
 	height: 40%;
-	display: none;
-	background-color: #fff;
+	display: flex;
+	transform: translate(-50%,-50%);
+	z-index: 25;
+
+	background-color: #fe562e;
 	border: 3px solid #fe562e;
 	box-shadow: 0 0 3px 3px #6C6B6B;
 	outline: 3px solid #fff;
-	z-index: 30;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	z-index: 25;
+	opacity: 0;
 
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+
+	transition: 2s;
+}
+
+/* благодарность о контакте*/
+.informer {
+	width: 70%;
+	height: 20%;
+	background-color: #fff;
+	color: #fe562e;
+	font-size: 5vw;
+	font-weight: bold;
+	line-height: 100%;
+	text-align: center;
+	align-self: center;
 }
 
 .bgCall2Act {
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	background-color: rgba(162,162,162,0.8);
@@ -1117,35 +1205,68 @@ footer li:hover .social{
 	z-index: 25;
 }
 
-
-.telForm {
-	width: 70%;
-	height: 25px;
-	background-color: #EFEFEF;
-	padding: 5px 5px 5px 40px;
-	font-size: 20px;
-	color: #574BEF;
-	font-weight: bolder;
-	text-align: left;
+.wrapTelForm,
+.wrapEmailForm {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
 }
 
-.sendBtn {
-	display: inline-block;
-	width: 90px;
-	height: 40px;
-	background-color: #1BB4BE;
-	color: #fff;
-	font-size: 20px;
+.wrapInput {
+	width: 60%;
+	height: 54px;
+	position: relative;
+	margin: 0 20px;
+}
+
+.telForm,
+.emailForm {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-color: #EFEFEF;
+	border-radius: 10px;
+	box-sizing: border-box;
+	padding: 5px 5px 5px 15px;
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	color: #5B5B5B;
 	font-weight: bolder;
-	line-height: 40px;
+	text-align: left;
+	letter-spacing: 5px;
+	outline:none;
+}
+
+.sendTelBtn,
+.sendEmailBtn {
+	display: block;
+	width: 150px;
+	height: 54px;
+	background-color: #14E814;
+	color: #fe562e;
+	font-size: 18px;
+	font-weight: bolder;
+	line-height: 54px;
 	text-align: center;
 	text-transform: uppercase;
 	box-shadow: 0 0 5px 2px #A1A1A1;
+	border-radius: 10px;
 	cursor: pointer;
+	transition: 0.5s;
 }
 
-.sendBtn:hover {
-	box-shadow: 0 0 5px 2px #A1A1A1 inset;
+.sendTelBtn:hover,
+.sendEmailBtn:hover {
+	box-shadow: 0 0 5px 3px #A1A1A1 inset;
+	color: #fff;
 }
 
 .call2ActWindow .text {
@@ -1153,7 +1274,46 @@ footer li:hover .social{
 	width: 100%;
 	font-size: 3vw;
 	font-weight: bold;
-	color: #fe562e;
+	color: white;
 	font-family: 'Open Sans';
 	text-align: center;
 }
+
+.telFormIcon {
+	width: 50px;
+	height: 50px;
+	background: transparent url(../images/tel.png) no-repeat 0 0 / cover;
+	display: inline-block;
+}
+
+.emailFormIcon {
+	width: 50px;
+	height: 39px;
+	background: transparent url(../images/email.png) no-repeat 0 0 / cover;
+	display: inline-block;
+}
+
+
+/* placeholder*/
+.hint {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 5px 5px 5px 15px;
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	color: #5B5B5B;
+	font-weight: bolder;
+	text-align: left;
+	letter-spacing: 5px;
+
+	z-index: -1;
+	transition: top 1s;
+}
+
+.hintTop {
+	top: -40px;
+	z-index: 1;
+}
+/*END placeholder*/

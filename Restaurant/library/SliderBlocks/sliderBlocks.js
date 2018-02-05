@@ -22,37 +22,27 @@ function createBlock(newBlockName, className, parentBlock) {
 	var newBlockName = document.createElement('div');
 	newBlockName.className = className;
 	parentBlock.appendChild(newBlockName);
+	return newBlockName;
 }
 
 
-createBlock('toolsSliderBlock', 'toolsSliderBlock toolsSliderBlockHorizont', slider);
-var toolsSliderBlock = document.querySelector('.toolsSliderBlock');
-createBlock('timeBarBlockHorizont', 'timeBarBlockHorizont', toolsSliderBlock);
-var timeBarBlockHorizont = document.querySelector('.timeBarBlockHorizont');
-// createBlock('timeBarProgresHorizont', 'timeBarProgresHorizont', timeBarBlockHorizont);
-// var timeBarProgresHorizont = document.querySelector('.timeBarProgresHorizont');
-createBlock('slideLeft', 'slideLeft', toolsSliderBlock);
-var slideLeft = document.querySelector('.slideLeft');
+var toolsSliderBlock = createBlock('toolsSliderBlock', 'toolsSliderBlock toolsSliderBlockHorizont', slider);
+// var timeBarBlockHorizont = createBlock('timeBarBlockHorizont', 'timeBarBlockHorizont', toolsSliderBlock);
+// var slideLeft = createBlock('slideLeft', 'slideLeft', toolsSliderBlock);
+// slideLeft.style.background = 'transparent url("./images/slider/left.png") no-repeat 0 0 / cover';
 // slideLeft.addEventListener('click', prevSlide, false);
-createBlock('circleBlock', 'circleBlock circleBlockHorizont', toolsSliderBlock);
-var circleBlock = document.querySelector('.circleBlock');
-createBlock('circle', 'circle', circleBlock);
-createBlock('circle', 'circle', circleBlock);
-createBlock('circle', 'circle', circleBlock);
-createBlock('circle', 'circle', circleBlock);
+var circleBlock = createBlock('circleBlock', 'circleBlock circleBlockHorizont', toolsSliderBlock);
+
+for ( var i = 0; i < 4; i++ ) {
+	var circle = createBlock('circle', 'circle', circleBlock);
+	// circle.addEventListener('click',changeSlideManual,false);
+}
 var circles = document.querySelectorAll('.circle');
-createBlock('slideRight', 'slideRight', toolsSliderBlock);
-var slideRight = document.querySelector('.slideRight');
+// var slideRight = createBlock('slideRight', 'slideRight', toolsSliderBlock);
+// slideRight.style.background = 'transparent url("./images/slider/right.png") no-repeat 0 0 / cover';
 // slideRight.addEventListener('click', nextSlide, false);
-// createBlock('controlCircle', 'controlCircle controlPause', toolsSliderBlock);
-// var controlCircle = document.querySelector('.controlCircle');
 
-
-slideRight.style.background = 'transparent url("./images/slider/right.png") no-repeat 0 0 / cover';
-slideLeft.style.background = 'transparent url("./images/slider/left.png") no-repeat 0 0 / cover';
-
-
-
+// Первоначальнон положение блоков
 changeDirectionBlock('vertical');
 
 function createBlocks() {
@@ -152,11 +142,9 @@ function changeDirectionBlock(directionBlock) {
 var intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
 var intervalChangeSlideBlock;
 var	nextImg = 1;
-
+var	numSlideBlock = 0;
 
 function changeSlideAuto() {
-	var	numSlideBlock = 0;
-	
 		intervalChangeSlideBlock = setInterval( function() {
 
 			if ( countSlide%2!= 0) {
@@ -201,44 +189,46 @@ function changeSlideAuto() {
 circles[countSlide].className += ' circleActive';
 
 
-// Смена слайда по выбору
-function changeSlideManual(event) {
-	clearInterval( intervalChangeSlide );
-	circles[countSlide].className = "circle";
-	if ( event.target != this ) {
-		for ( var i = 0; i <= circles.length; i++ ) {
-			if ( circles[i] == event.target ) {
-				circles[i].className += " circleActive";
-				countSlide = i;
-				intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
-			}
-		}
-	}	
-}
+// // Смена слайда по выбору
+// function changeSlideManual(event) {
+// 	clearInterval( intervalChangeSlide );
+// 	circles[countSlide].className = "circle";
+// 	if ( event.target != this ) {
+// 		for ( var i = 0; i <= circles.length; i++ ) {
+// 			if ( circles[i] == event.target ) {
+// 				circles[i].className += " circleActive";
+// 				countSlide = i;
+// 				intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
+// 			}
+// 		}
+// 	}	
+// }
 
-// Следующий слайд
-function nextSlide() {
-	clearInterval( intervalChangeSlide );
-	circles[countSlide].className = "circle";
-	if ( countSlide == circles.length-1 ) {
-		countSlide = -1;
-	}
-	countSlide++;
-	circles[countSlide].className = "circle circleActive";
-	intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
-}
+// // Следующий слайд
+// function nextSlide() {
+// 	console.log(countSlide);
+// 	clearInterval( intervalChangeSlide );
+// 	circles[countSlide].className = "circle";
+// 	if ( countSlide == circles.length-1 ) {
+// 		countSlide = -1;
+// 	}
+// 	countSlide++;
+// 	circles[countSlide].className = "circle circleActive";
+// 	intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
+// 	console.log(countSlide);
+// }
 
-// Предыдущий слайд
-function prevSlide() {
-	clearInterval( intervalChangeSlide );
-	circles[countSlide].className = "circle";
-	if ( countSlide == 0 ) {
-		countSlide = circles.length;
-	}
-	countSlide--;
-	circles[countSlide].className = "circle circleActive";
-	intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
-}
+// // Предыдущий слайд
+// function prevSlide() {
+// 	clearInterval( intervalChangeSlide );
+// 	circles[countSlide].className = "circle";
+// 	if ( countSlide == 0 ) {
+// 		countSlide = circles.length;
+// 	}
+// 	countSlide--;
+// 	circles[countSlide].className = "circle circleActive";
+// 	intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
+// }
 
 
 // Назначение таймера смены слайдов

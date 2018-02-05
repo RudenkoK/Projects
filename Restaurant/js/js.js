@@ -53,6 +53,7 @@ for ( var i = 0; i < call2Acts.length; i++) {
 
 var videoBtn = document.querySelector('.videoBtn');
 videoBtn.addEventListener('click', showMainVideo, false);
+var bgVideo = document.querySelector('.bgVideo');
 var videoContainerMain = document.querySelector('.video-container-main');
 var mainVideo = document.getElementById('mainVideo');
 
@@ -60,7 +61,7 @@ function showMainVideo() {
 	videoContainerMain.style.width = 65 + '%';
 	videoContainerMain.style.height = videoContainerMain.style.width * 0.6 + 'px';
 	videoContainerMain.style.display = 'block';
-	bgCall2Act.style.display = 'block'
+	bgVideo.style.display = 'block';
 	// var closeCall2ActWindow = document.querySelector('.closeCall2ActWindow');
 	closeCall2ActWindows[0].style.display = 'block';
 	// closeCall2ActWindow.addEventListener('click',closeCall2Act,false);
@@ -296,56 +297,152 @@ function screen7_animation() {
 
 /* END screen 8 */
 
+/* screen 9 */
+
+/* END screen 9*/
 
 /* Call2Act*/
 var bgCall2Act = document.querySelector('.bgCall2Act');
+var bgvCall2Act = document.querySelector('.bgCall2Act');
 var call2ActWindow = document.querySelector('.call2ActWindow');
-var sendBtn = document.querySelector('.sendBtn');
-sendBtn.addEventListener('click',sendTel, false);
+var sendTelBtn = document.querySelector('.sendTelBtn');
+sendTelBtn.addEventListener('click',sendTel, false);
+var sendEmailBtn = document.querySelector('.sendEmailBtn');
+sendEmailBtn.addEventListener('click',sendEmail, false);
 var closeCall2ActWindows = document.querySelectorAll('.closeCall2ActWindow');
+var telForm = document.querySelector('.telForm'); 
+var emailForm = document.querySelector('.emailForm');
 for (var i = 0; i < closeCall2ActWindows.length; i++ ) {
 	closeCall2ActWindows[i].addEventListener('click', closeCall2Act,false);
 }
-
+var informer = document.querySelector('.informer');
 
 function showCall2Act() {
 	bgCall2Act.style.display = 'block';
 	call2ActWindow.style.display = 'flex';
+
+	for ( var i = 0; i < screens.length; i++ ) {
+		if ( screens[i].classList.contains('active')){
+			call2ActWindow.style.top = i  * window.innerHeight + window.innerHeight / 2 + 'px';
+			informer.style.top = i  * window.innerHeight + window.innerHeight / 2 + 'px';
+			bgCall2Act.style.top = i * window.innerHeight  + 'px';  
+		}
+	}
+	call2ActWindow.style.left = 50 + '%';
+	call2ActWindow.style.opacity = 1;
 }
 
 function closeCall2Act() {
-	bgCall2Act.style.display = 'none';
-	call2ActWindow.style.display = 'none';
+	bgVideo.style.display = 'none';
+	bgvCall2Act.style.display = 'none';
 	videoContainerMain.style.display = 'none';
 	mainVideo.pause();
+
+	clearInfo();
+	bgCall2Act.style.display = 'none';
+
+	var hints = document.querySelectorAll('.hint');
+	hints[0].className = 'hint';
+	hints[1].className = 'hint';
+
 }
 
 function sendTel() {
 	var str = document.querySelector('.telForm').value;
 	var result = '';
 
-	result = str.match(/^+([0-9]{1,2})\s?(([0-9]{1,3}))\s?([0-9-]{1,9})$/);
-	console.log(result);
+	result = str.match(/^((\+\d)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/);
 
 	if (result == null) {
-		inputEmail.style.boxShadow = '0 0 5px 2px #FF0006 inset';
+		telForm.style.boxShadow = '0 0 5px 3px #FF0006 inset';
+		telForm.style.color = 'red';
+		telForm.value = 'wrong format';
+		var timerRepeat =  setTimeout(function(){
+			telForm.style.boxShadow = '0 0 0px 0px #2DD96E inset';
+			telForm.style.color = '#5B5B5B';
+			telForm.value = str;
+		},3000);
 	} else {
 		telForm.style.color = '#B3B3B3';
-		telForm.value = "Ваш адрес добавлен";
-		telForm.style.boxShadow = '0 0 5px 2px #2DD96E inset';
-		var intervalIDClear = setTimeout(clearTel, 3000);
+		var hints = document.querySelectorAll('.hint');
+		hints[0].className = 'hint';
+		hints[1].className = 'hint';
+		informer.style.left = 50 + '%';
+		informer.style.opacity = 1;
+		informer.innerHTML = "Thanks! We will contact you.";
+		// telForm.style.boxShadow = '0 0 5px 3px #2DD96E inset';
+		clearInfo();
+		var timerRepeat = setTimeout(function(){
+			informer.style.left = -50 + '%';
+			informer.style.opacity = 0;
+			bgCall2Act.style.display = 'none';
+		},4000);
 	}
 }
 
-function clearTel() {
+function sendEmail() {
+	var str = document.querySelector('.emailForm').value;
+	var result = '';
+
+	result = str.match(/^[(a-z)(0-9)]+[\_\.\-]*[(a-z)|(0-9)]+[@][(a-z)(0-9)]+[\.]?[a-z]+[\.][a-z]{2,5}$/);
+	console.log(result);
+
+	if (result == null) {
+		emailForm.style.boxShadow = '0 0 5px 3px #FF0006 inset';
+		emailForm.style.color = 'red';
+		emailForm.value = 'Address is not correct';
+		var timerRepeat =  setTimeout(function(){
+			emailForm.style.boxShadow = '0 0 0px 0px #2DD96E inset';
+			emailForm.style.color = '#5B5B5B';
+			emailForm.value = str;
+		},3000);
+	} else {
+		emailForm.style.color = '#B3B3B3';
+		var hints = document.querySelectorAll('.hint');
+		hints[0].className = 'hint';
+		hints[1].className = 'hint';
+		informer.style.left = 50 + '%';
+		informer.style.opacity = 1;
+		informer.innerHTML = "Thanks! We will contact you.";
+		// emailForm.style.boxShadow = '0 0 5px 3px #2DD96E inset';
+		clearInfo();
+		var timerRepeat = setTimeout(function(){
+			informer.style.left = -50 + '%';
+			informer.style.opacity = 0;
+			bgCall2Act.style.display = 'none';
+		},4000);
+	}
+}
+
+function clearInfo() {
 	telForm.value = "";
-	telForm.style.color = '#574BEF';
+	telForm.style.color = '#5B5B5B';
 	telForm.style.boxShadow = '0 0 0px 0px #2DD96E inset';
+
+	emailForm.value = "";
+	emailForm.style.boxShadow = '0 0 0px 0px #2DD96E inset';
+	emailForm.style.color = '#5B5B5B';
+
+	call2ActWindow.style.left = -50 + '%';
+	call2ActWindow.style.opacity = 0;
+
 }
 
 
 
 
 
+// placeholder выезжает вверх
+var inputBlocks = document.querySelectorAll('input');
 
+for (i=0; i < inputBlocks.length; i++ ) {
+	var hint = document.createElement('div');
+	hint.innerHTML = inputBlocks[i].placeholder;
+	hint.className = 'hint';
+	inputBlocks[i].parentNode.insertBefore(hint,inputBlocks[i]);
+	inputBlocks[i].onkeydown = function() {
 
+	var placeholder = this.previousElementSibling;
+	placeholder.className = ' hint hintTop';
+	}
+}
