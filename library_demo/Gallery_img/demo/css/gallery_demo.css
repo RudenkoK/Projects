@@ -1,0 +1,193 @@
+.gallery {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin:  auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: #000;
+	z-index: 5;
+	overflow: hidden;
+}
+
+.block {
+	display: block;
+	border: 1px solid #D6D6D6;
+	position: absolute;
+	cursor: pointer;
+	transition: 0.5s;
+	z-index: 2;
+	overflow: hidden;
+	background-color: #000;
+	background-repeat: no-repeat;
+	filter: grayscale(0.8) brightness(0.5);
+	transition: outline 1s;
+}
+
+.block:hover {
+	filter: grayscale(0);
+}
+
+
+.fullPic {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	overflow: hidden;
+	background-color: black;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: cover;
+}
+
+.call2Act {
+	display: block;
+	font-size: 14px;
+	letter-spacing: 0.6px;
+	color: #fe562e;
+	background-color: transparent; 
+	border: 3px solid #fe562e; 
+	border-radius: 30px;
+	text-align: center;
+	line-height: 38px;
+	padding: 0 30px; 
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+ .call2Act:hover {
+	background-color: #fe562e;
+	color: #fff;
+}
+
+.btnBack {
+	display: none;
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+	letter-spacing: 0.6px;
+	color: #fe562e;
+	background-color: transparent; 
+	border: 3px solid #fe562e; 
+	border-radius: 30px;
+	text-align: center;
+	padding: 0 30px; 
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: all 0.5s;
+	z-index: 20;
+	font-size: 18px;
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+
+.rotatePic{
+	animation: rotateBlock 0.7s ease 0s 1 normal forwards; 
+}
+
+@keyframes rotateBlock {
+		0%  { }
+		100% { transform: rotateY(90deg); }
+}
+
+.flyFace {
+	animation: flyFaceAn 7s ease 0s 1 normal both;
+}
+
+@keyframes flyFaceAn {
+		0%  { }
+		99% { transform: scale(15); opacity: 0; display: none; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(15); opacity: 0; display: none; filter: grayscale(0) brightness(1); z-index: -1; }
+}
+
+.flyLeft {
+	animation: flyLeftAn 7s ease 0s 1 normal forwards;
+}
+
+@keyframes flyLeftAn {
+		0%  { }
+		99% { transform: scale(10) translateX(-100%); opacity: 0; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(10) translateX(-100%); opacity: 0; filter: grayscale(0) brightness(1); z-index: -1; }
+}
+
+.flyRight {
+	animation: flyRightAn 7s ease 0s 1 normal forwards;
+}
+
+@keyframes flyRightAn {
+		0%  { }
+		99% { transform: scale(10) translateX(300%); opacity: 0; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(10) translateX(300%); opacity: 0; filter: grayscale(0) brightness(1); z-index: -1;}
+}
+
+.flyTop {
+	animation: flyTopAn 7s ease 0s 1 normal forwards;
+}
+
+@keyframes flyTopAn {
+		0%  { }
+		99% { transform: scale(10) translateY(-300%); opacity: 0; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(10) translateY(-300%); opacity: 0; filter: grayscale(0) brightness(1); z-index: -1;}
+}
+
+.flyBottom {
+	animation: flyBottomAn 7s ease 0s 1 normal forwards;
+}
+
+@keyframes flyBottomAn {
+		0%  { }
+		99% { transform: scale(10) translateY(300%); opacity: 0; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(10) translateY(300%); opacity: 0; filter: grayscale(0) brightness(1); z-index: -1;}
+}
+
+.flyLeftTop {
+	animation: flyLeftTopAn 7s ease 0s 1 normal forwards;
+}
+
+@keyframes flyLeftTopAn {
+		0%  { }
+		99% { transform: scale(10) translate(-300%, -300%); opacity: 0; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(10) translate(-300%, -300%); opacity: 0; filter: grayscale(0) brightness(1); z-index: -1;}
+}
+
+.flyLeftBottom {
+	animation: flyLeftBottomAn 7s ease 0s 1 normal forwards;
+}
+
+@keyframes flyLeftBottomAn {
+		0%  { }
+		99% { transform: scale(10) translate(-300%, 300%); opacity: 0; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(10) translate(-300%, 300%); opacity: 0; filter: grayscale(0) brightness(1); z-index: -1;}
+}
+
+.flyRightTop {
+	animation: flyRightTopmAn 7s ease 0s 1 normal forwards;
+}
+
+@keyframes flyRightTopmAn {
+		0%  { }
+		99% { transform: scale(10) translate(300%, -300%); opacity: 0; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(10) translate(300%, -300%); opacity: 0; filter: grayscale(0) brightness(1); z-index: -1; }
+}
+
+.flyRightBottom {
+	animation: flyRightBottomAn 7s ease 0s 1 normal forwards;
+}
+
+@keyframes flyRightBottomAn {
+		0%  { }
+		99% { transform: scale(10) translate(300%, 300%); opacity: 0; filter: grayscale(0) brightness(1)}
+		100% { transform: scale(10) translate(300%, 300%); opacity: 0; filter: grayscale(0) brightness(1); z-index: -1;}
+}

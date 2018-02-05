@@ -1,0 +1,72 @@
+html,
+body {
+	width: 100%;
+	max-width: 1920px;
+	height: 100%;
+	font-size: 14px;
+}
+
+body {
+	margin: 0;
+	user-select: none;
+}
+
+.clients {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.carousel {
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%,-50%); 
+	height: 80%;
+	overflow: hidden;
+}
+
+.carousel .clientsList {
+	height: 70%;
+	width: 4080px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0;
+	display: flex;
+	align-items: center;
+}
+
+.carousel li {
+  display: inline-block;
+}
+
+.carousel .clientImg {
+	display: block;
+	margin: 0 20px;
+}
+
+.clients .arrow {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 45%;
+	cursor: pointer;
+	filter: grayscale(1) opacity(0.2);
+	transition: all 0.5s;
+}
+
+.clients .leftArrow {
+	left: -50px;
+	transform: translate(-50%, -50%);
+}
+
+.clients .rightArrow {
+ 	right: -50px;
+ 	transform: translate(50%, -50%);
+ }
+
+.clients .arrow:hover {
+	filter: grayscale(0) opacity(1);
+}

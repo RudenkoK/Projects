@@ -1,0 +1,77 @@
+.container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	overflow: hidden;
+}
+
+.title{
+	font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+	font-weight: bold;
+	font-size: 68px;
+	color: #000;
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 70px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	z-index: 25;
+}
+
+.oldLetter,
+.newLetter {
+	display: inline-block;
+	height: 70px;
+	width: 50px;
+	line-height: 70px;
+	text-align: center;
+	font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+	font-weight: normal;
+	font-size: 68px; /*3.5vw 68px*/
+	color: inherit;
+}
+
+.oldLetter {
+	opacity: 1;
+}	
+
+.newLetter {
+	opacity: 0;
+} 	
+
+.hideLetter {
+	animation: letterHideAnimate 1s ease 1 normal 4s both;		
+}
+
+
+.showLetter {
+	animation: letterShowAnimate 1s ease 1 normal 4s both;		
+}		
+
+@keyframes letterHideAnimate {
+		0%  { 
+			transform: rotateX(0deg);
+			opacity: 1;
+		}
+		100% {
+			transform: translateX(-150%) rotateY(-90deg);
+			opacity: 0;
+		}
+}
+
+@keyframes letterShowAnimate {
+		0%  { 
+			transform: translateX(150%) rotateY(90deg);
+			opacity: 0;
+		}
+		100% {
+			transform: translateX(0%) rotateY(0deg);
+			opacity: 1;
+		}
+}
