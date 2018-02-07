@@ -1,17 +1,21 @@
-'use strict'
-
 var countClients = 12;		// кол-во изображений в карусели
 var countImgPage = 3;		// кол-во изображений на странице
 var countImgStep = 1;		// шаг смещения
-var timerChangeImg = 3000;	// частота смены картинок в миллисекундах
-var durationMove = 1;		// продолжительность смены картинки в секундах
+var timerChangeImg = 5000;	// частота смены картинок в миллисекундах
+var durationMove = 3;		// продолжительность смены картинки в секундах
 
 var position = 0;
 var flagMouseOver = true;
-var widthImg = 300;			// ширина изображения px
+var widthImg =  Math.floor( window.innerWidth * 0.6 / 3) ;	// ширина изображения px
+
 var marginImg = 40;			// суммарный внешний горизонтальный отступ	 
 
 var clients = document.querySelector('.clients');
+
+var clientText = 'Clients are companies or individuals who would like to open their own restaurant and have a financial opportunity.';
+var ourCompany = 'We have experience and detailed instructions how to achieve amazing results.';
+var partners = 'Partners help us and our customers to supply the necessary equipment, equipment and products.';
+
 
 function createCarousel() {
 	var carousel = document.createElement('div');
@@ -44,7 +48,7 @@ function moveCarouselLeft() {
 }
 
 function moveCarouselRight() {
-	if ( position > -3060 ) { 
+	if ( position > -(widthImg + marginImg) * (countClients - countImgPage)) { 
 		position = position - (widthImg + marginImg) * countImgStep;
 		clientsList.style.marginLeft = position + 'px';
 	}
@@ -52,7 +56,7 @@ function moveCarouselRight() {
 
 function moveCarouselAuto() {
 	var moveCarouselInterval = setInterval(function(){
-		if ( position > -3060 && flagMoveRight == true) {
+		if ( position > -(widthImg + marginImg) * (countClients - countImgPage) && flagMoveRight == true) {
 			moveCarouselRight();
 		} else {
 			moveCarouselLeft();
@@ -66,10 +70,12 @@ function moveCarouselAuto() {
 	},timerChangeImg);
 }
 
-
 createCarousel();
 moveCarouselAuto();
 
+var leftArrow = document.querySelector('.leftArrow');
+var rightArrow = document.querySelector('.rightArrow');
 var clientsList = document.querySelector('.clientsList');
 var carousel = document.querySelector('.carousel');
+
 var flagMoveRight = true;
