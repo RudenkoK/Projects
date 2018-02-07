@@ -51,48 +51,6 @@
 	padding: 5px;
 }
 
-/* Vertical position toolsblock */
-/*.toolsSliderBlockVert {
-	position: absolute;
-	top: 70%;
-	left: 20px;
-	height: 224px;
-	width: 60px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-end;
-	flex-wrap: wrap;
-}
-
-.circleBlockVert {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-start;
-}
-
-.timeBarBlockVert {
-	position: absolute;
-	top: 0px;
-	left: 5px;
-	width: 5px;
-	height: 154px;
-	border: 1px solid #000000;
-	background-color: #616161;
-	box-sizing: border-box;
-	margin: 10px 10px 40px 10px;
-}
-
-.timeBarProgresVert {
-	width: 3px;
-	height: 0px;
-	border-radius: 2px;
-	box-sizing: border-box;
-	border: 1px solid #fe562e;
-	background-color: #fe562e;*/
-}
-/* END Vertical position toolsblock  */
 
 /* Horizontal position toolsblock  */
 .toolsSliderBlockHorizont {
@@ -101,7 +59,7 @@
 	left: 50%;
 	transform: translate(-50%, -120%);
 	height: 40px;
-	width: 270px;
+	width: 280px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -120,7 +78,7 @@
 	position: absolute;
 	top: 100%;
 	left: 0;
-	width: 270px;
+	width: 280px;
 	height: 1px;
 	background-color: #616161;
 }
@@ -159,7 +117,6 @@
 .circleActive {
 	background-color: #fe562e;
 	border: 2px solid #fff;
-/* 	box-shadow: 0 0 5px 2px #fe562e; */
 	transition: 0.5s;
 	color: #fff;
 }
@@ -197,11 +154,11 @@
 }
 
 .controlPause {
-	background: url('../images/slider/pause.png') no-repeat 0 0 / cover;
+	background: url('./images/slider/pause.png') no-repeat 0 0 / cover;
 }
 
 .controlPlay {
-	background: url('../images/slider/play_.png') no-repeat 0 0 / cover;
+	background: url('./images/slider/play_.png') no-repeat 0 0 / cover;
 }
 
 /* END settings block*/

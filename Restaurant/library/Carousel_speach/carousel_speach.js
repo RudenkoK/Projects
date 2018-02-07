@@ -32,33 +32,7 @@ function standByPos() {
 		sliderBlock_cs.style.left = leftPosBlock + 'px';
 		sliderBlock_cs.style.width = parseInt( window.innerWidth ) / 4 + 'px';
 
-		switch (i) {
-			case 0:
-				sliderBlock_cs.style.top = 0;
-				sliderBlock_cs.style.left = 15 + '%';
-				sliderBlock_cs.style.transform = 'translateX(-50%) scale(0.9';
-				sliderBlock_cs.style.zIndex = '5';
-
-				break;
-			case 1:
-				sliderBlock_cs.style.top = 0;
-				sliderBlock_cs.style.left = 50 + '%';
-				sliderBlock_cs.style.transform = 'translateX(-50%) scale(1.2)';
-				sliderBlock_cs.style.zIndex = '10';
-			break;
-			case 2:
-				sliderBlock_cs.style.top = 0;
-				sliderBlock_cs.style.left = 85 + '%';
-				sliderBlock_cs.style.transform = 'translateX(-50%) scale(0.9)';
-				sliderBlock_cs.style.zIndex = '5';
-			break;
-			case 3:
-				sliderBlock_cs.style.top = 0;
-				sliderBlock_cs.style.left = 50 + '%';
-				sliderBlock_cs.style.transform = 'translateX(-50%) scale(0.6)';
-				sliderBlock_cs.style.zIndex = '2';
-			break;	
-		}
+		sliderBlock_cs.className += ' ' + directionCarousel + '_' +i; 
 
 		var photo = createBlock('photo', 'div', 'photo', sliderBlock_cs);
 		photo.style.background = 'url("./images/cust/' + arrImageCust[i] + '") no-repeat 0 0 / cover';
@@ -106,11 +80,9 @@ function slider_cs_moveRight() {
 		moveleftFlag = false;
 		movePlay = true;
 		for ( var i = 0; i < sliderBlocks_cs.length; i++) {
-			// sliderBlocks_cs[i].style.animationDuration = animationDuration + 's';
 			sliderBlocks_cs[i].style.animationPlayState = 'running';
 			if ( (parseInt(getComputedStyle(sliderBlocks_cs[i]).left)) > parseInt( window.innerWidth) / 2 ) {
 				if ( getComputedStyle(sliderBlocks_cs[i]).zIndex < 5 ) {
-					console.log()
 					sliderBlocks_cs[i].className = 'sliderBlock_cs active_right_cs_2';
 					continue;
 				} else if ( getComputedStyle(sliderBlocks_cs[i]).zIndex > 5  ) {
@@ -147,7 +119,6 @@ function slider_cs_moveLeft() {
 		moveleftFlag = true;
 		movePlay = true;
 		for ( var i = 0; i < sliderBlocks_cs.length; i++) {
-			// sliderBlocks_cs[i].style.animationDuration = animationDuration + 's';
 			sliderBlocks_cs[i].style.animationPlayState = 'running';
 			if ( (parseInt(getComputedStyle(sliderBlocks_cs[i]).left)) > parseInt( window.innerWidth) / 2 ) {
 				if ( getComputedStyle(sliderBlocks_cs[i]).zIndex  < 5 ) {
@@ -181,7 +152,6 @@ function slider_cs_moveLeft() {
 		}
 	}
 }
-
 
 function slider_cs_pause() {
 	var slider_cs_stop = document.querySelector('.slider_cs_stop');

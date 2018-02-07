@@ -25,22 +25,13 @@ function createBlock(newBlockName, className, parentBlock) {
 	return newBlockName;
 }
 
-
 var toolsSliderBlock = createBlock('toolsSliderBlock', 'toolsSliderBlock toolsSliderBlockHorizont', slider);
-// var timeBarBlockHorizont = createBlock('timeBarBlockHorizont', 'timeBarBlockHorizont', toolsSliderBlock);
-// var slideLeft = createBlock('slideLeft', 'slideLeft', toolsSliderBlock);
-// slideLeft.style.background = 'transparent url("./images/slider/left.png") no-repeat 0 0 / cover';
-// slideLeft.addEventListener('click', prevSlide, false);
 var circleBlock = createBlock('circleBlock', 'circleBlock circleBlockHorizont', toolsSliderBlock);
 
 for ( var i = 0; i < 4; i++ ) {
 	var circle = createBlock('circle', 'circle', circleBlock);
-	// circle.addEventListener('click',changeSlideManual,false);
 }
 var circles = document.querySelectorAll('.circle');
-// var slideRight = createBlock('slideRight', 'slideRight', toolsSliderBlock);
-// slideRight.style.background = 'transparent url("./images/slider/right.png") no-repeat 0 0 / cover';
-// slideRight.addEventListener('click', nextSlide, false);
 
 // Первоначальнон положение блоков
 changeDirectionBlock('vertical');
@@ -182,61 +173,5 @@ function changeSlideAuto() {
 		}
 }
 
-// Назначение события на кнопку управления слайдером пауза/пуск
-// controlCircle.addEventListener('click', controlSlider, false);
-
 // Первоначальное состояние слайдера
 circles[countSlide].className += ' circleActive';
-
-
-// // Смена слайда по выбору
-// function changeSlideManual(event) {
-// 	clearInterval( intervalChangeSlide );
-// 	circles[countSlide].className = "circle";
-// 	if ( event.target != this ) {
-// 		for ( var i = 0; i <= circles.length; i++ ) {
-// 			if ( circles[i] == event.target ) {
-// 				circles[i].className += " circleActive";
-// 				countSlide = i;
-// 				intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
-// 			}
-// 		}
-// 	}	
-// }
-
-// // Следующий слайд
-// function nextSlide() {
-// 	console.log(countSlide);
-// 	clearInterval( intervalChangeSlide );
-// 	circles[countSlide].className = "circle";
-// 	if ( countSlide == circles.length-1 ) {
-// 		countSlide = -1;
-// 	}
-// 	countSlide++;
-// 	circles[countSlide].className = "circle circleActive";
-// 	intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
-// 	console.log(countSlide);
-// }
-
-// // Предыдущий слайд
-// function prevSlide() {
-// 	clearInterval( intervalChangeSlide );
-// 	circles[countSlide].className = "circle";
-// 	if ( countSlide == 0 ) {
-// 		countSlide = circles.length;
-// 	}
-// 	countSlide--;
-// 	circles[countSlide].className = "circle circleActive";
-// 	intervalChangeSlide = setInterval(changeSlideAuto, intervalChangeSlideValue);
-// }
-
-
-// Назначение таймера смены слайдов
-// var intervalSliderProgres = setInterval(timeBar, intervalChangeSlideValue/80);
-
-// Таймер заполнения прогресбара смены слайдов
-// function timeBar() {
-// 	if  ( parseInt( getComputedStyle(timeBarProgresHorizont).width) <= 280 ) {
-// 		timeBarProgresHorizont.style.width = parseInt( getComputedStyle(timeBarProgresHorizont).width) + parseInt( getComputedStyle(timeBarBlockHorizont).width) / 50 + 'px';
-// 	}
-// }

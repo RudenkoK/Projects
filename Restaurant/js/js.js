@@ -6,7 +6,7 @@ $(document).ready(function(){
 		afterMove:function (index){
 			switch (index) {
 				case 2:
-					screen2_animation();
+					showSector_animation();
 					break;
 				case 3:
 					dynamicNumber($('#dynNum1'), 0, 6524, 2000);
@@ -28,10 +28,14 @@ $(document).ready(function(){
 			}
 		}
 	});
-});     
+});  
 
 
-var statusScrolBar = document.querySelector('.statusScrolBar');
+var intervalshowCall2Act = setInterval(function(){
+	showCall2Act();
+}, 100000);
+
+// var statusScrolBar = document.querySelector('.statusScrolBar');
 var screens = document.getElementsByTagName('section');
 
 function createBlock(newBlockName, typeBlock, className, parentBlock) {
@@ -62,14 +66,9 @@ function showMainVideo() {
 	videoContainerMain.style.height = videoContainerMain.style.width * 0.6 + 'px';
 	videoContainerMain.style.display = 'block';
 	bgVideo.style.display = 'block';
-	// var closeCall2ActWindow = document.querySelector('.closeCall2ActWindow');
 	closeCall2ActWindows[0].style.display = 'block';
-	// closeCall2ActWindow.addEventListener('click',closeCall2Act,false);
 	mainVideo.play();
 }
-
-/* screen 1 */
-
 
 // screen 2
 
@@ -86,14 +85,14 @@ var sectors3 = document.querySelectorAll('.screen2 .sector3');
 var col3TxtBlock = document.querySelectorAll('.screen2 .col3TxtBlock');
 
 	col3TxtBlock[0].style.left = -300 + '%';
-	col3TxtBlock[0].style.top = 50 + '%';
+	col3TxtBlock[0].style.top = 35 + '%';
 	col3TxtBlock[1].style.left = 0 + '%';
 	col3TxtBlock[1].style.top = 150 + '%';
 	col3TxtBlock[2].style.left = 150 + '%';
-	col3TxtBlock[2].style.top = 50 + '%';
+	col3TxtBlock[2].style.top = 35 + '%';
 
 
-function screen2_animation() {
+function showSector_animation() {
 		var col3TxtBlock = document.querySelectorAll('.screen2 .col3TxtBlock');
 
 		var intervalCircleZoom =  setInterval(function(){
@@ -117,7 +116,7 @@ function screen2_animation() {
 						sectors1[screen2Step].style.backgroundColor = 'red';
 						sectors2[screen2Step].style.backgroundColor = 'red';
 						sectors3[screen2Step].style.backgroundColor = 'white';
-						col3TxtBlock[screen2Step].style.top = 50 + '%';
+						col3TxtBlock[screen2Step].style.top = 35 + '%';
 						break;
 					case 2:
 						sectors1[screen2Step].style.backgroundColor = 'red';
@@ -129,9 +128,7 @@ function screen2_animation() {
 			} 
 				screen2Step++;
 		}, 300);
-	
 }
-
 
 
 /* screen 3 */
@@ -165,8 +162,6 @@ function dynamicLine(elem, widthFinish) {
   }
 }
 /* END screen 3 */
-
-
 
 /* screen 6 */
 
@@ -291,16 +286,6 @@ function screen7_animation() {
 }
 /* END screen 7 */
 
-
-/* screen 8 */
-
-
-/* END screen 8 */
-
-/* screen 9 */
-
-/* END screen 9*/
-
 /* Call2Act*/
 var bgCall2Act = document.querySelector('.bgCall2Act');
 var bgvCall2Act = document.querySelector('.bgCall2Act');
@@ -404,7 +389,6 @@ function sendEmail() {
 		informer.style.left = 50 + '%';
 		informer.style.opacity = 1;
 		informer.innerHTML = "Thanks! We will contact you.";
-		// emailForm.style.boxShadow = '0 0 5px 3px #2DD96E inset';
 		clearInfo();
 		var timerRepeat = setTimeout(function(){
 			informer.style.left = -50 + '%';
@@ -427,10 +411,6 @@ function clearInfo() {
 	call2ActWindow.style.opacity = 0;
 
 }
-
-
-
-
 
 // placeholder выезжает вверх
 var inputBlocks = document.querySelectorAll('input');

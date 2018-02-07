@@ -25,9 +25,6 @@ function screenLoad() {
 }
 
 var countString = 0;
-// var container = document.querySelector('.container');
-//var title = document.querySelector('.title');
-
 
 convert(strOld, 0);
 var oldLetters = document.querySelectorAll('.oldLetter');

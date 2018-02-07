@@ -6,6 +6,23 @@
 Меню может содержать как основные пукты, так и подпункты первого уровня, отображающиеся при клике на пункте меню.
 Меню через настраиваемый промежуток времени скрывается с основного экрана.
 
+## Используемые ресурсы
+* [jQuery](http://jquery.com/)
+* [Font Awesome](https://fontawesome.com/)
+* [Google Fonts](https://fonts.google.com/)
+(для более стабильной и автономной работы необходимые шрифты располагаются в соответствующей паке fonts)
+* [Странный JavaScript](https://dmitrytinitilov.gitbooks.io/strange-javascript/content/)
+* [javascript.ru](https://learn.javascript.ru/)
+* [W3Scholls](https://www.w3schools.com/html/)
+
+## Программное обеспечение, используемое в работе
+* [Sublime Text Build 3126 x64_custom](https://www.sublimetext.com/)
+* [Google Chrome Версия 63.0.3239.132 (Официальная сборка), (64 бит)](https://www.google.ru/chrome/browser/desktop/index.html)
+* [Opera 50.0.2762.67 (PGO)](http://www.opera.com/ru)
+* [Firefox Quantum 57.0.4 (64-bit)](https://www.mozilla.org/ru/firefox/)
+* [Adobe PhotoShop CS6](https://www.adobe.com/ru/products/photoshop.html)
+
+
 ## Содержание библиотеки
 Название файла  | Содержание файла
 ----------------|----------------------
@@ -43,7 +60,7 @@ Project
 ```
 Пользователь может по своему усмотрению размещать файлы библиотеки, настраивая соответствующие пути к файл.
 
-3. В файле html необходимо прописать соответствующие пути:
+3. В файле html необходимо прописать соответствующие пути для подключения таблицы стилей и скрипта:
 ```html
 <body>
 ...

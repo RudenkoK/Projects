@@ -16,36 +16,26 @@ function createBlock(newBlockName, className, parentBlock) {
 	var newBlockName = document.createElement('div');
 	newBlockName.className = className;
 	parentBlock.appendChild(newBlockName);
+	return newBlockName;
 }
 
-createBlock('slideOld', 'slideOld', slider);
-var slideOld = document.querySelector('.slideOld');
-createBlock('slideNew', 'slideNew', slider);
-var slideNew = document.querySelector('.slideNew');
-createBlock('toolsSliderBlock', 'toolsSliderBlock toolsSliderBlockHorizont', slider);
-var toolsSliderBlock = document.querySelector('.toolsSliderBlock');
-createBlock('timeBarBlockHorizont', 'timeBarBlockHorizont', toolsSliderBlock);
-var timeBarBlockHorizont = document.querySelector('.timeBarBlockHorizont');
-createBlock('timeBarProgresHorizont', 'timeBarProgresHorizont', timeBarBlockHorizont);
-var timeBarProgresHorizont = document.querySelector('.timeBarProgresHorizont');
-createBlock('slideLeft', 'slideLeft', toolsSliderBlock);
-var slideLeft = document.querySelector('.slideLeft');
-createBlock('circleBlock', 'circleBlock circleBlockHorizont', toolsSliderBlock);
-var circleBlock = document.querySelector('.circleBlock');
-createBlock('circle', 'circle', circleBlock);
-createBlock('circle', 'circle', circleBlock);
-createBlock('circle', 'circle', circleBlock);
-createBlock('circle', 'circle', circleBlock);
-var circles = document.querySelectorAll('.circle');
-createBlock('slideRight', 'slideRight', toolsSliderBlock);
-var slideRight = document.querySelector('.slideRight');
-createBlock('controlCircle', 'controlCircle controlPause', toolsSliderBlock);
-var controlCircle = document.querySelector('.controlCircle');
-
-
-slideRight.style.background = 'transparent url("./images/slider/right.png") no-repeat 0 0 / cover';
+var slideOld = createBlock('slideOld', 'slideOld', slider);
+var slideNew = createBlock('slideNew', 'slideNew', slider);
+var toolsSliderBlock = createBlock('toolsSliderBlock', 'toolsSliderBlock toolsSliderBlockHorizont', slider);
+var timeBarBlockHorizont = createBlock('timeBarBlockHorizont', 'timeBarBlockHorizont', toolsSliderBlock);
+var timeBarProgresHorizont =createBlock('timeBarProgresHorizont', 'timeBarProgresHorizont', timeBarBlockHorizont);
+var slideLeft = createBlock('slideLeft', 'slideLeft', toolsSliderBlock);
 slideLeft.style.background = 'transparent url("./images/slider/left.png") no-repeat 0 0 / cover';
+var circleBlock = createBlock('circleBlock', 'circleBlock circleBlockHorizont', toolsSliderBlock);
 
+ for (var i =0; i < arrImages.length; i++ ) {
+ 	var circle = createBlock('circle', 'circle', circleBlock);
+ }
+
+var circles = document.querySelectorAll('.circle');
+var slideRight = createBlock('slideRight', 'slideRight', toolsSliderBlock);
+slideRight.style.background = 'transparent url("./images/slider/right.png") no-repeat 0 0 / cover';
+var controlCircle = createBlock('controlCircle', 'controlCircle controlPause', toolsSliderBlock);
 
 var actualImg = 0;
 
@@ -56,8 +46,6 @@ controlCircle.addEventListener('click', controlSlider, false);
 // Первоначальное состояние слайдера
 slideOld.style.background = '#000 url("./images/slider/' + arrImages[actualImg]+ '") no-repeat 0 0 / cover';
 circles[actualImg].className += ' circleActive';
-
-
 
 	
 var intervalChangeSlide = setInterval(changeSlideAuto, timerSlide);
@@ -97,7 +85,6 @@ function changeSlideHelper() {
 	}
 	timeBarProgresHorizont.style.width = 0 + 'px';
 }
-
 
 // Смена слайда по выбору
 function changeSlideManual(event) {
@@ -156,13 +143,9 @@ function controlSlider() {
 }
 
 
-
-// Назначение таймера смены слайдов
-//intervalSliderProgres = setInterval(timeBar, timerSlide/160);
-
 // Таймер заполнения прогресбара смены слайдов
 function timeBar() {
-	if  ( parseInt( getComputedStyle(timeBarProgresHorizont).width) <= 270 ) {
+	if  ( parseInt( getComputedStyle(timeBarProgresHorizont).width) <= 287 ) {
 		timeBarProgresHorizont.style.width = parseInt( getComputedStyle(timeBarProgresHorizont).width) + parseInt( getComputedStyle(timeBarBlockHorizont).width) / 100 + 'px';
 	}
 }

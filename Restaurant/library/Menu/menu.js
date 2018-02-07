@@ -2,10 +2,10 @@
 
 var timeHideMenu = 7000; //интервал скрытия меню
 var arrMenuItems = ['gallery','pricing','contacts','all blocks']; //Наименования пунктов меню
-var arrMenuLinks = ['5','8','11',''];	//Внутренние ссылки меню
+var arrMenuLinks = ['5','8','10',''];	//Внутренние ссылки меню
 var arrSubmenuNumItems = [0,0,0,11];	//кол-во подменю пугктов мею
-var arrSubmenuItems = ['Start','3 steps','Counters','Other Customers','Gallery','Team','Shef','Pricing','Clients','Foods','Contacts']; //Наименования пунктоа подменю
-var arrSubmenuLinks = ['#1','#2','#3','#4','#5','#6','#7','#8','#9','#10','#11']; //Ссылки пунктов подменю
+var arrSubmenuItems = ['Start','3 steps','Counters','Other Customers','Gallery','Team','Shef','Pricing','Clients','Contacts']; //Наименования пунктоа подменю
+var arrSubmenuLinks = ['#1','#2','#3','#4','#5','#6','#7','#8','#9','#10']; //Ссылки пунктов подменю
 
 var countSubmenuItems = 0;
 var activMenuFlag = false;

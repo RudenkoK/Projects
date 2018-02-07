@@ -27,11 +27,12 @@
 
 .carousel li {
   display: inline-block;
+  margin: 0 20px;
 }
 
 .carousel .clientImg {
 	display: block;
-	margin: 0 20px;
+	max-width: none;
 }
 
 .clients .arrow {
